@@ -3,7 +3,7 @@ import axios from "axios";
 export const getCatFact = async () => {
   try {
     const response = await axios.get("https://catfact.ninja/fact", {
-      timeout: 5000, // 5 seconds timeout
+      timeout: 5000,
     });
     return response.data.fact;
   } catch (error) {
