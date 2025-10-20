@@ -10,7 +10,7 @@ app.use(express.json());
 app.use("/me", profileRoute);
 
 // Handle unknown routes
-app.use((res) => {
+app.use((req, res) => {
   res.status(404).json({
     status: "error",
     message: "Route not found. Try visiting /me for the profile endpoint.",
@@ -18,7 +18,7 @@ app.use((res) => {
 });
 
 // Global error handler
-app.use((err, res) => {
+app.use((req, err,next, res) => {
   console.error("Internal Server Error:", err.stack);
   res.status(500).json({
     status: "error",
